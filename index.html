@@ -240,13 +240,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--serif);
-    font-size: 22px;
-    color: rgba(255,255,255,0.85);
+    overflow: hidden;
+    background: var(--bg);
   }
 
-  .cover-aura{ background: linear-gradient(135deg, #1c2b4a, #0d1117); }
-  .cover-skillfinity{ background: linear-gradient(135deg, #1a3020, #0d1117); }
+  .project-cover img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
   .project-body{ padding: 24px; }
 
@@ -385,13 +388,19 @@
   .modal-close:hover{ border-color: var(--accent-border); }
 
   .modal-cover{
-    height: 180px;
+    height: 220px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--serif);
-    font-size: 22px;
-    color: rgba(255,255,255,0.85);
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .modal-cover img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .modal-content{ padding: 32px; }
@@ -540,14 +549,18 @@
     </div>
     <div class="project-grid">
       <button class="project-card" onclick="openProjectModal('aura')">
-        <div class="project-cover cover-aura">Aura</div>
+        <div class="project-cover">
+          <img src="images/aura-cover.png" alt="Aura">
+        </div>
         <div class="project-body">
           <h3>Aura</h3>
           <p>UI/UX Case Study</p>
         </div>
       </button>
       <button class="project-card" onclick="openProjectModal('skillfinity')">
-        <div class="project-cover cover-skillfinity">Skillfinity</div>
+        <div class="project-cover">
+          <img src="images/skillfinity-cover.png" alt="Skillfinity">
+        </div>
         <div class="project-body">
           <h3>Skillfinity</h3>
           <p>Landing Page &amp; Design System</p>
@@ -618,7 +631,7 @@
 <script>
   const projects = {
     aura: {
-      cover: 'cover-aura',
+      img: 'images/aura-cover.png',
       title: 'Aura',
       kicker: 'UI/UX Case Study',
       summary: 'Aura is an end-to-end UI/UX case study exploring how a wellness app can guide users toward healthier daily routines through calm, focused interaction design. The project covers research, wireframing, and a full visual design system built in Figma.',
@@ -626,7 +639,7 @@
       behance: 'https://www.behance.net/nevenkullab1'
     },
     skillfinity: {
-      cover: 'cover-skillfinity',
+      img: 'images/skillfinity-cover.png',
       title: 'Skillfinity',
       kicker: 'Landing Page & Design System',
       summary: 'Skillfinity is a landing page and design system built for an online learning platform, focused on clear conversion paths, a scalable component library, and a responsive layout that holds up across devices.',
@@ -672,7 +685,9 @@
     const p = projects[id];
     const inner = document.getElementById('projectModalInner');
     inner.innerHTML = `
-      <div class="modal-cover ${p.cover}">${p.title}</div>
+      <div class="modal-cover">
+        <img src="${p.img}" alt="${p.title}">
+      </div>
       <div class="modal-content">
         <h3>${p.title}</h3>
         <p class="modal-kicker">${p.kicker}</p>
